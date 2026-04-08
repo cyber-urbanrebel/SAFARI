@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/auth';
 import destinationRoutes from './routes/destinations';
 import bookingRoutes from './routes/bookings';
@@ -19,11 +20,38 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Rate limiting
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' },
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many authentication attempts, please try again later.' },
+});
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later.' },
+});
+
+app.use(globalLimiter);
+
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/destinations', destinationRoutes);
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/auth', authLimiter, authRoutes);
+app.use('/api/destinations', apiLimiter, destinationRoutes);
+app.use('/api/bookings', apiLimiter, bookingRoutes);
+app.use('/api/users', apiLimiter, userRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {
