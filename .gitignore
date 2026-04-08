@@ -1,0 +1,14 @@
+node_modules
+client/node_modules
+server/node_modules
+client/dist
+server/dist
+server/generated
+*.log
+.env
+client/.env
+server/.env
+.prisma
+coverage
+.DS_Store
+.vscode
