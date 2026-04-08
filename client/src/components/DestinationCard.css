@@ -1,0 +1,137 @@
+.dest-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.dest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.dest-card-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.dest-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.dest-card:hover .dest-card-image img {
+  transform: scale(1.05);
+}
+
+.dest-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #f59e0b;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dest-category {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.dest-card-content {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dest-card-content h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.dest-location {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.dest-description {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.dest-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+}
+
+.dest-rating {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.dest-reviews {
+  color: #999;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.dest-price-amount {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.dest-price-unit {
+  font-size: 0.75rem;
+  color: #888;
+  display: block;
+}
+
+.dest-cta {
+  display: block;
+  text-align: center;
+  background: #1a1a2e;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  transition: background 0.2s;
+}
+
+.dest-cta:hover {
+  background: #f59e0b;
+  color: #000;
+}
